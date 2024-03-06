@@ -1,6 +1,7 @@
 package com.jobs.job_analyzer.Entity;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,8 +14,10 @@ public class job {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int id;
-    private String title, description, location, companyName;
-    private float salary;
+    private String title,  location, companyName;
+    @Column(columnDefinition = "TEXT")
+    private String description;
+    private float salary, score;
     public job() {
     }
     public job(String title, String description, String location, String companyName, float salary) {
@@ -23,6 +26,13 @@ public class job {
         this.location = location;
         this.companyName = companyName;
         this.salary = salary;
+    }
+    
+    public float getScore() {
+        return score;
+    }
+    public void setScore(float score) {
+        this.score = score;
     }
     public int getId() {
         return id;

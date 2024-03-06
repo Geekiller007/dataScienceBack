@@ -10,10 +10,13 @@ import com.jobs.job_analyzer.Entity.job;
 public class jobService {
 
     public List<job> getJobs(){
-        return List.of(new job("RCS","description", "Tunis", "Vneuron", 500));
+        return ;
     }
-    public float analyseJob(job job){
-        return (float)5.2;
+    public job analyseJob(job job){
+        float score;
+        score = 30;
+        job.setScore(score);
+        return job;
     }
 
 }

@@ -23,7 +23,7 @@ public class jobController {
     
     @GetMapping
     public List<job> getJobs(){
-        return jobService.getJobs();
+        return jobRepository.findAll();
     }
     public jobController(com.jobs.job_analyzer.Services.jobService jobService, JobRepository jobRepository) {
         this.jobService = jobService;
@@ -32,7 +32,8 @@ public class jobController {
     @SuppressWarnings("null")
     @PostMapping("/analyseJob")
     public float AnalyseJob(@RequestBody job requestData){
+        jobService.analyseJob(requestData);
         jobRepository.save(requestData);
-        return (float)50;
+        return requestData.getScore();
     }
 }
